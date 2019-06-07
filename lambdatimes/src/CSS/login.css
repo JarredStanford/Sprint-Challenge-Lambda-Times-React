@@ -1,0 +1,13 @@
+.login2 {
+  height: 350px;
+  width: 300px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  height: 5rem;
+}

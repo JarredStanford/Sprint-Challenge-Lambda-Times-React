@@ -1,16 +1,12 @@
 import React from "react";
-import TopBar from "./components/TopBar";
-import Header from "./components/Header";
-import Content from "./components/Content/Content";
 
+import ContentPage from "./components/ContentPage";
+import Login from "./components/Login";
+import withAuthenticate from "./components/authentication/withAuthenticate";
+
+const ComponentFromWithAuthenticate = withAuthenticate(ContentPage)(Login);
 const App = () => {
-  return (
-    <div className="App">
-      <TopBar />
-      <Header />
-      <Content />
-    </div>
-  );
+  return <ComponentFromWithAuthenticate />;
 };
 
 export default App;

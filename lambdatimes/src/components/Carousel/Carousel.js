@@ -1,35 +1,63 @@
-import React, { Component } from 'react';
-import { carouselData } from '../../data'
-// Complete this Carousel 
+import React, { Component } from "react";
+import { carouselData } from "../../data";
+// Complete this Carousel
 export default class Carousel extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-
-    }
+      data: [],
+      selected: 0
+    };
   }
-  componentDidMount(){
-
+  componentDidMount() {
+    this.setState({
+      data: carouselData
+    });
   }
 
   leftClick = () => {
-
-  }
+    if (this.state.selected === 0) {
+      this.setState({
+        selected: this.state.data.length - 1
+      });
+    } else
+      this.setState({
+        selected: this.state.selected - 1
+      });
+  };
 
   rightClick = () => {
-
-  }
+    if (this.state.selected === this.state.data.length - 1) {
+      this.setState({
+        selected: 0
+      });
+    } else
+      this.setState({
+        selected: this.state.selected + 1
+      });
+  };
 
   selectedImage = () => {
-    return <img src={} style={{display: 'block'}} />
-  }
-  
-  render(){
+    return (
+      <img
+        src={this.state.data[this.state.selected]}
+        style={{ display: "block" }}
+        alt="carousel"
+      />
+    );
+  };
+
+  render() {
     return (
       <div className="carousel">
-        <div className="left-button" onClick={this.leftClick}>{"<"}</div>
-        <div className="right-button" onClick={this.rightClick}>{">"}</div>
+        <div className="left-button" onClick={this.leftClick}>
+          {"<"}
+        </div>
+        <div>{this.selectedImage()}</div>
+        <div className="right-button" onClick={this.rightClick}>
+          {">"}
+        </div>
       </div>
-    )
+    );
   }
 }
